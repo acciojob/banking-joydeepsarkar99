@@ -47,7 +47,7 @@ public class BankAccount {
           digits = digits / 10;
         }
         if(digitSum != sum){
-            throw new AccountNumberException();
+            throw new AccountNumberException("Account Number can not be generated");
         }
         return "Account Number Generated";
     }
@@ -61,7 +61,7 @@ public class BankAccount {
     public void withdraw(double amount) throws Exception {
         // Remember to throw "Insufficient Balance" exception, if the remaining amount would be less than minimum balance
         if(balance - amount < minBalance){
-            throw new InsufficientBalanceException();
+            throw new InsufficientBalanceException("Insufficient Balance");
         }
         else balance -= amount;
     }

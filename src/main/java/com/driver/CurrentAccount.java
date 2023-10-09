@@ -10,9 +10,12 @@ public class CurrentAccount extends BankAccount{
         super(name,balance,5000);
         this.tradeLicenseId = tradeLicenseId;
         if(balance < 5000){
-            throw new InsufficientBalanceException();
+            throw new InsufficientBalanceException("Insufficient Balance");
         }
+    }
 
+    public String getTradeLicenseId() {
+        return tradeLicenseId;
     }
 
     public void validateLicenseId() throws Exception {
@@ -35,7 +38,7 @@ public class CurrentAccount extends BankAccount{
             int len = tradeLicenseId.length() % 2 == 0 ? tradeLicenseId.length() / 2 : (tradeLicenseId.length() / 2) + 1;
             for(int freq : map.values()){
                 if(freq > len){
-                    throw new ValidLicenseException();
+                    throw new ValidLicenseException("Valid License can not be generated");
                 }
             }
         }
